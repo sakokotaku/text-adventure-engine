@@ -1,0 +1,93 @@
+{
+  "save_info": {
+    "turn": 0,
+    "date": "X月X日 周X",
+    "time_slot": "上午/下午/傍晚/夜晚",
+    "location": "当前所在地点"
+  },
+
+  "world_rules": {
+    "setting": "世界背景一行描述（固定不变，禁止修改）",
+    "tone": "游戏基调（固定不变）",
+    "player_scope": "玩家在世界中的行动边界，如无则空字符串"
+  },
+
+  "characters": {
+    "heroines": [
+      {
+        "name": "角色名（固定不变）",
+        "nickname": "外号（固定不变，注明由来）",
+        "appearance": "初次登场完整外貌描述（固定不变，禁止修改）",
+        "personality_core": "3-5个关键词（固定不变，禁止修改）",
+        "speech_samples": {
+          "daily": "「日常典型对话原文引用（固定不变）」",
+          "angry_or_hurt": "「生气或受伤时原文引用（固定不变）」",
+          "exposed_or_flustered": "被戳穿时的反应方式描述（固定不变）",
+          "most_characteristic": "「对玩家最典型的一句话原文引用（固定不变）」"
+        },
+        "hidden_attributes": {
+          "approachability": "可攻略/条件可攻略/不可攻略（固定不变）",
+          "intent": "善意/中性/试探/捉弄/敌意/利用（固定不变）",
+          "signal_reliability": "真实/表里不一/欺骗性（固定不变）",
+          "attachment_style": "主动型/被动型/若即若离型（固定不变）"
+        },
+        "address": {
+          "player_calls_her": "玩家怎么称呼她（固定不变）",
+          "she_calls_player": "她怎么称呼玩家（固定不变）"
+        },
+        "first_reactions": [
+          "已建立的默契，格式：行为 → 她的反应 → 此后这是两人默契（固定不变，禁止重置）"
+        ],
+        "private_anchors": [
+          "只有两人知道的细节（固定不变）"
+        ],
+        "affection": 0,
+        "relationship_stage": "陌生人/点头之交/朋友/心动期/专属剧情",
+        "last_interaction": "上次做了什么/说了什么/她的反应，两句以内"
+      }
+    ],
+    "supporting_characters": [
+      {
+        "name": "配角名",
+        "gender": "男/女",
+        "type": "男性朋友/室友/对手 | 女性闺蜜/同学",
+        "appearance": "简短外貌描述（固定不变）",
+        "personality_core": "2-3个关键词",
+        "relationship_to_player": "和玩家的关系一句话",
+        "relationship_to_heroines": "和哪位女主有关联，知道什么",
+        "current_status": "目前状态/动向"
+      }
+    ]
+  },
+
+  "story_state": {
+    "time": "同save_info.time_slot",
+    "location": "同save_info.location",
+    "event_cards": [
+      {
+        "event": "事件标题，4字以内",
+        "location": "地点",
+        "who_initiated": "玩家/角色名",
+        "beats": ["经过节拍1", "经过节拍2", "经过节拍3"],
+        "emotional_result": {
+          "player": "玩家的情绪/感受",
+          "her": "她的情绪/反应"
+        },
+        "aftermath": "事件余韵，一句话说清对关系的影响"
+      }
+    ],
+    "recent_memory": [
+      "玩家做了什么 → 结果（行为事实，禁止使用：关系升温/更亲密等模糊描述）",
+      "她说了什么 → 玩家的反应",
+      "发生了什么事 → 双方情绪变化"
+    ],
+    "suspended_issues": [
+      {
+        "character": "角色名",
+        "issue": "她在等什么回应/玩家欠她一个说法/悬而未决的张力"
+      }
+    ]
+  },
+
+  "gm_instructions": "必须读取以下内容并严格执行：1) world_rules（世界基础设定，不得修改或重新解释）；2) characters中所有locked字段（appearance/personality_core/speech_samples/hidden_attributes/address/first_reactions/private_anchors均为历史既成事实，禁止重置）；3) story_state.event_cards（关键事件，不得改写为未发生）；4) story_state.recent_memory（最近行为事实，必须视为已发生）；5) story_state.suspended_issues。从suspended_issues[0]继续游戏，直接进入场景，无需确认。存档必须记录当前实际发生的状态，禁止将未发生的剧情、预测的走向或期望的结果写入任何字段；suspended_issues只记录当前场景中真实存在的未解决张力，禁止虚构。"
+}
