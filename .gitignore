@@ -1,0 +1,27 @@
+# 配置文件（含 API Key，禁止提交）
+config.json
+
+# Python 缓存
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# 日志
+logs/
+
+# 存档（本地游戏数据，不纳入版本控制）
+saves/
+
+# 测试缓存
+.pytest_cache/
+
+# 编辑器 / IDE
+.vscode/
+.idea/
+
+# Claude Code 本地设置
+.claude/settings.local.json
+
+# 备份文件
+*.bak

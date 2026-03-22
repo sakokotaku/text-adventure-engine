@@ -1,0 +1,39 @@
+{
+  "active_provider": "openrouter",
+  "providers": {
+    "deepseek": {
+      "base_url": "https://api.deepseek.com",
+      "api_key": "YOUR_DEEPSEEK_API_KEY",
+      "model": "deepseek-chat",
+      "max_tokens": 2048,
+      "temperature": 0.9
+    },
+    "openai": {
+      "base_url": "https://api.openai.com",
+      "api_key": "YOUR_OPENAI_API_KEY",
+      "model": "gpt-4o",
+      "max_tokens": 2048,
+      "temperature": 0.9
+    },
+    "claude": {
+      "base_url": "https://api.anthropic.com",
+      "api_key": "YOUR_ANTHROPIC_API_KEY",
+      "model": "claude-sonnet-4-20250514",
+      "max_tokens": 2048,
+      "temperature": 0.9
+    },
+    "openrouter": {
+      "base_url": "https://openrouter.ai/api",
+      "api_key": "YOUR_OPENROUTER_API_KEY",
+      "model": "anthropic/claude-sonnet-4.6",
+      "max_tokens": 4096,
+      "temperature": 0.7
+    }
+  },
+  "stream": false,
+  "debug": false,
+  "context": {
+    "recent_turns": 6,
+    "summary_threshold": 20
+  }
+}

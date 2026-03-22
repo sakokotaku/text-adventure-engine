@@ -1,0 +1,64 @@
+{
+  "_template_rules": {
+    "memory_degradation": "事件细节可衰减，情绪描述可模糊，关系事实不反向丢失，habits永不降级。",
+    "recent_rule": "按条数存，上限5条，不按回合窗口筛。每次存档写入1条新事件，超出5条时最老一条压缩为一句话移入mid。",
+    "mid_rule": "只收三类事件：① 高情绪（愤怒/哭/大笑等强烈情绪）② 高张力（张力值达9触发的节点）③ 关系转折（好感单次±5以上）。其余日常流水直接丢弃，不得写入。上限8条，超出时删除无★条目，有★条目压缩移入long。",
+    "long_rule": "只保留改变关系结构的事实，上限5条。满了之后新增条目替换最早的无★条目。",
+    "habits_rule": "固化行为默契，永不降级，永不删除，上限3条。",
+    "gm_console_sync_rule": "GM控制台修改后必须同步写入memory：① 修改好感±5以上→在mid写入「GM修改：好感从X变为Y」★；② 强制触发事件→在recent写入该事件结果；③ 改写或删除事件→同步从memory对应层删除该条记录；④ 跳转时间→更新save_info.time_slot和date。"
+  },
+
+  "save_info": {
+    "turn": 0,
+    "date": "X月X日 周X",
+    "time_slot": "上午/下午/傍晚/夜晚",
+    "location": "当前所在地点"
+  },
+
+  "world": {
+    "background": "世界背景一行描述（固定不变，禁止修改）",
+    "player_name": "玩家角色名",
+    "player_identity": "身份描述",
+    "tone": "游戏基调（固定不变）",
+    "player_scope": "玩家在世界中的行动边界，如无则空字符串",
+    "world_config": {
+      "forbidden_elements": [],
+      "base_tone": "",
+      "unlockable_tones": {},
+      "narrative_config": {
+        "pace": "moderate",
+        "tone": "neutral",
+        "style": "literary",
+        "pov": "second",
+        "detail_level": "medium",
+        "dialogue_ratio": "balanced"
+      }
+    }
+  },
+
+  "heroines": [
+    {
+      "_template_note": "每个heroine对象须包含以下appearance_weight字段",
+      "appearance_weight": {
+        "value": 10,
+        "consecutive_absent": 0
+      }
+    }
+  ],
+
+  "supporting_characters": [],
+
+  "social_network": [],
+
+  "world_events": [],
+
+  "memory": {
+    "recent": [],
+    "mid": [],
+    "long": []
+  },
+
+  "suspended_issues": [],
+
+  "gm_instructions": "读取顺序：1) world（固定不变）；2) heroines固定字段（appearance/personality_core/speech_samples/hidden_attributes/address/habits，禁止重置）；3) supporting_characters与social_network；4) memory三层（recent完整细节优先，mid情绪印记★优先还原，long关系事实必须承认）；5) suspended_issues第一条直接进入场景。每次生成存档时执行降级：recent超5条→最老一条压缩进mid；mid超8条→删无★保有★压缩进long；long超5条→替换最早无★条目。只有高情绪/高张力/关系转折事件才能写入mid，日常流水直接丢弃。事件细节可衰减，情绪描述可模糊，关系事实不反向丢失，habits永不降级。以speech_samples语气还原角色。禁止将未发生剧情写入任何字段。GM控制台修改后必须同步写入memory：好感±5以上在mid写入★记录；强制触发事件在recent写入结果；改写或删除事件同步清除memory对应条目；跳转时间同步更新save_info。"
+}
